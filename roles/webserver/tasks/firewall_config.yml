@@ -11,17 +11,6 @@
       loop:
         - "{{ nextcloud_web_port }}"
         - "{{ nextcloud_ssl_port }}"
-
-    - name: open database port if remote server
-      ufw:
-        rule: allow
-        port: "{% if nextcloud_db_type == 'mysql' %}3306{% elif nextcloud_db_type == 'pgsql' %}5432{% endif %}"
-        proto: tcp
-        from: "{{ item.ansible_default_ipv4.address }}"
-      loop: "{{ hostvars[groups['webserver']] }}"
-      delegate_to: "{{ groups['database'][0] }}"
-      when: groups['database'] != groups['webserver']
-
     - name: open redis port if remote server
       ufw:
         rule: allow

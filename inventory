@@ -3,7 +3,7 @@
 # Your Nextcloud Server Domain Name
 
 # Default is the fqdn of the Machine
-nextcloud_fqdn          = nextcloud.example.tld
+nextcloud_fqdn          = nextcloud.sample.tlp
 
 # Selfsigned Certificate are Default
 nextcloud_certificate_type  = 'selfsigned'
@@ -36,10 +36,11 @@ nextcloud_passwd            = ''
 # Leave Password Empty to generate secure, random one
 #nextcloud_db_type           = 'mysql'        # (MariaDB)
 nextcloud_db_type           = 'pgsql'        # (PostgreSQL)
-nextcloud_db_host           = 'localhost'
-nextcloud_db                = 'nextcloud'
-nextcloud_db_user           = 'nextcloud'
+nextcloud_db_host           = 'remote'
+nextcloud_db                = ''
+nextcloud_db_user           = ''
 nextcloud_db_passwd         = ''
+nextcloud_db_prefix         = 'oc_'
 
 # Nextcloud Mail Setup
 nextcloud_configure_mail    = false
@@ -63,7 +64,7 @@ nextcloud_webserver_type    = nginx
 
 # this sets the default region for phone numbers on your Nextcloud server
 # using ISO 3166-1 country codes such as DE for Germany, FR for France,
-nextcloud_default_phone_region = 'DE'
+nextcloud_default_phone_region = 'GB'
 
 # php version 8.0 (for nextcloud 21 and higher)
 php_version                 = '8.0'
@@ -120,9 +121,6 @@ install_fulltextsearch = false
 localhost ansible_connection=local
 
 [redis]
-localhost ansible_connection=local
-
-[database]
 localhost ansible_connection=local
 
 [webserver]

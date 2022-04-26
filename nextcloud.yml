@@ -25,15 +25,6 @@
     - webserver
     - php
 
-- name: 'install database'
-  hosts: database
-  become: true
-  gather_facts: false
-
-  roles:
-    - { role: mariadb,  when: (nextcloud_db_type == 'mysql') }
-    - { role: postgres, when: (nextcloud_db_type == 'pgsql') }
-
 - name: 'install elasticsearch'
   hosts: elasticsearch
   become: true
